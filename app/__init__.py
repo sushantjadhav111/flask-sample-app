@@ -21,6 +21,7 @@ def create_app():
                     "create_skill": "/create-skill",
                     "seed_skills": "/seed-skills",
                     "list_skills": "/skills",
+                    "get_skills": "/skills",
                 },
             }
         )
