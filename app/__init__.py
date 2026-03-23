@@ -1,12 +1,14 @@
 from flask import Flask, jsonify
 
 from config import Config
+from app.models.skill_model import SkillStore
 from app.routes.skill_routes import skill_bp
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+    SkillStore.configure(app.config["SKILLS_DATA_FILE"])
 
     @app.get("/")
     def index():
@@ -17,6 +19,7 @@ def create_app():
                 "endpoints": {
                     "health": "/health",
                     "create_skill": "/create-skill",
+                    "seed_skills": "/seed-skills",
                     "list_skills": "/skills",
                 },
             }

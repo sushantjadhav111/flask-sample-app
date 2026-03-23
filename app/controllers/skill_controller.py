@@ -20,6 +20,33 @@ def list_skills():
     return jsonify({"count": len(skills), "skills": skills}), 200
 
 
+def seed_dummy_skills():
+    created_skills = SkillStore.seed_dummy_skills()
+    if not created_skills:
+        skills = SkillStore.get_all_skills()
+        return (
+            jsonify(
+                {
+                    "message": "Dummy skills already exist.",
+                    "count": len(skills),
+                    "skills": skills,
+                }
+            ),
+            200,
+        )
+
+    return (
+        jsonify(
+            {
+                "message": "Dummy skills created successfully.",
+                "count": len(created_skills),
+                "skills": created_skills,
+            }
+        ),
+        201,
+    )
+
+
 def get_skill(skill_id):
     skill = SkillStore.get_skill_by_id(skill_id)
     if not skill:
