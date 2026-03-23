@@ -17,7 +17,7 @@ def create_app():
                 "endpoints": {
                     "health": "/health",
                     "create_skill": "/create-skill",
-                    "list_skills": "/skills",
+                    "get_skills": "/skills",
                 },
             }
         )
